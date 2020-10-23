@@ -1,0 +1,22 @@
+version: "2"
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - TZ=America/Fortaleza
+      - MYSQL_ROOT_PASSWORD=dotproject
+      - MYSQL_DATABASE=dotproject
+      - MYSQL_USER=dotproject
+      - MYSQL_PASSWORD=dotproject
+    expose:
+      - "3306"
+    volumes:
+      - ./persistent/mysql:/var/lib/mysql
+  dockProject:
+    image: nilsonrsvieira/dockproject:0.2
+    restart: always
+    ports:
+      - "80:80"
+    links:
+      - mysql
