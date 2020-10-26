@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   mysql:
     image: mysql:5.7
@@ -14,7 +14,7 @@ services:
     volumes:
       - ./persistent/mysql:/var/lib/mysql
   dockProject:
-    image: nilsonrsvieira/dockproject:0.2
+    image: nilsonrsvieira/dockproject:0.3
     restart: always
     ports:
       - "80:80"
