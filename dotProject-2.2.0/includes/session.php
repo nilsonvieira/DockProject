@@ -187,7 +187,7 @@ function dPsessionConvertTime($key) {
 }
 
 function dpSessionStart($start_vars = 'AppUI') {
-	session_name('dotproject');
+	// session_name('dotproject');
 	if (ini_get('session.auto_start') > 0) {
 		session_write_close();
 	}
