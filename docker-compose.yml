@@ -19,7 +19,7 @@ services:
   dockProject:
     depends_on:
       - "mysql"
-    image: nilsonrsvieira/dockproject:1.0
+    image: nilsonrsvieira/dockproject:1.1
     restart: always
     ports:
       - "80:80"
