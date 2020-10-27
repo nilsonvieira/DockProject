@@ -22,6 +22,7 @@ RUN sed -i 's/session\.use\_trans\_sid\ =\ 0/session\.use\_trans\_sid\ =\ 0/' /e
 RUN sed -i 's/memory\_limit\ =\ 128M/memory\_limit\ =\ 128M/' /etc/php/7.3/apache2/php.ini
 
 # STEP 4: Install DotProject
+RUN /var/www/html/index.html
 COPY ./dotProject-2.2.0/ /var/www/html/
 RUN cd /var/www/html/ && chown -R www-data:www-data ./
 

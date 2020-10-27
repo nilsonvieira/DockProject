@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 services:
   mysql:
     image: mysql:5.7
@@ -9,14 +9,19 @@ services:
       - MYSQL_DATABASE=dotproject
       - MYSQL_USER=dotproject
       - MYSQL_PASSWORD=dotproject
+    ports:
+      - "3306:3306"
     expose:
-      - "3306"
+      - '3306'
     volumes:
-      - ./persistent/mysql:/var/lib/mysql
+      - /opt/docker/dpmysql:/var/lib/mysql
+      # - /var/run/mysqld/mysqld.sock:/var/run/mysqld/mysqld.sock   
   dockProject:
-    image: nilsonrsvieira/dockproject:0.3
+    depends_on:
+      - "mysql"
+    image: nilsonrsvieira/dockproject:1.0
     restart: always
     ports:
       - "80:80"
     links:
-      - mysql
+      - "mysql"
