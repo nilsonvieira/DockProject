@@ -12,22 +12,21 @@ RUN apt install -y \
 RUN apt install -y \
     unzip wget vim net-tools
 
-
+# STEP 3: Configurations on Apache Conf.
 RUN IP=`ip a | grep inet | grep eth0 | awk '{print$2}' | cut -d"/" -f 1` && echo "ServerName $IP" >> /etc/apache2/apache2.conf
 
-# STEP 3: Cconfiguration on PHP.INI file
+# STEP 4: Configurations on PHP.INI file
 RUN sed -i 's/\;date\.timezone\ =/\;date\.timezone\ \=\ America\/Fortaleza/' /etc/php/7.3/apache2/php.ini
 RUN sed -i 's/session\.auto\_start\ =\ 0/session\.auto\_start\ =\ 1/' /etc/php/7.3/apache2/php.ini
 RUN sed -i 's/session\.use\_trans\_sid\ =\ 0/session\.use\_trans\_sid\ =\ 0/' /etc/php/7.3/apache2/php.ini
 RUN sed -i 's/memory\_limit\ =\ 128M/memory\_limit\ =\ 128M/' /etc/php/7.3/apache2/php.ini
 
-# STEP 4: Install DotProject
-RUN /var/www/html/index.html
+# STEP 5: Copy DotProject folder for Docker
 COPY ./dotProject-2.2.0/ /var/www/html/
 RUN cd /var/www/html/ && chown -R www-data:www-data ./
+RUN rm -rf /var/www/html/index.html
 
-# STEP 5: Start Apache
-
+# STEP 6: Enviroments and start Apache
 EXPOSE 80
 ENV APACHE_RUN_USER                         www-data
 ENV APACHE_RUN_GROUP                        www-data
