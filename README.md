@@ -23,4 +23,4 @@ docker-compose up -d
 ### Configure Database DotProject
 
 # Licence
-[MIT License](./License)
+[MIT License](./LICENSE)
