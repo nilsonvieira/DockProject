@@ -14,6 +14,9 @@ apache2 libapache2-mod-php php-xml php-gd php-mbstring php-mysqli php-curl php-l
 |nilsonrsvieira/dockproject | 1.0  | v2.2.0              |Stable        |
 |nilsonrsvieira/dockproject | 1.1  | v2.2.0              |Stable PT-BR  |
 
+### Databases
+`MySQL 5.7`
+
 ## Instalation
 ### Docker Compose
 [File Compose](./docker-compose.yml)
